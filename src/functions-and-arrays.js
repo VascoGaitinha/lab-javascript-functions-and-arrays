@@ -57,7 +57,32 @@ function sumNumbers(input) {
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(input) {
+  let suma = 0;
+  let inputToNumber;
+  if (input.length === 0 ){
+    return 0;
+  }
+
+  else{
+    for (i=0; i<input.length; i++){
+      if(typeof(input[i]) === "number"  || typeof(input[i]) === "boolean")
+      {
+        suma += input[i];
+      }
+      else if(typeof(input[i]) === "string")
+      {
+        inputToNumber = Number(input[i])
+        suma += inputToNumber
+      }
+      else if(typeof(input[i]) === "object" || typeof(input[i]) === "array") 
+      {
+        throw new Error;
+      }
+    }
+  }
+  return suma //cant't find the problem here - using myArray=[true,"2", "3", 4, false] the returned value is 10.
+}
 
 
 
@@ -75,7 +100,7 @@ function averageNumbers(input) {
   
   else {
     let sum = 0;
-    for (i=0; i<input.length; i++){
+    for (let i=0; i<input.length; i++){
       sum += input[i]
     }
     final = (sum/input.length)
@@ -102,7 +127,19 @@ function averageWordLength(input) {
 }
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(input) {
+  let output = 0;
+    if (input.length === 0){ return null}
+    
+    else {
+      input.forEach(element => {
+        if (typeof(element)==="number" || typeof(element)==="boolean"){output += element}
+        else if (typeof(element)==="string"){output += element.length }
+      });
+    }
+    return output/input.length
+}
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -120,29 +157,35 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(input) {
+  let newArray = [];
   if(input.length === 0){
-      return null
+      return null;
   }
 
   else {
     for (i=0 ; i<input.length; i++){
-      for (j=i+1; j<input.length; j++){
-        if (input[i] === input[j]){
-          console.log(input[j] + " is repeated ... removing index "+j)
-          input.splice(j,1)
-        }
+      for (j=i; j<input.length; j++){
+        if (input[i] === input[j] && newArray.includes(input[i]) === false)
+        {newArray.push(input[i])}
+        else if (input[i] !== input[j] && newArray.includes(input[i]) === false)
+        {newArray.push(input[i])}
       }
     }
   }
-  return input
+  return newArray
 }
+
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
-
+function doesWordExist(input, lookingFor) {
+  if (input.length === 0){return null}
+  if (input[0] === lookingFor && input.length === 1){return true}
+  if (!input.includes(lookingFor)){return false}
+  if (input.includes(lookingFor)){return true}
+}
 
 
 // Iteration #7: Count repetition
@@ -160,8 +203,17 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(input, word) {
+  let wordCount = 0;
+  if (input.length === 0){return 0}
 
+  else {
+    for (i=0;i<input.length;i++){
+        if(input[i] === word){wordCount++}
+      }
+    }
+  return wordCount
+}
 
 
 // Iteration #8: Bonus
@@ -188,7 +240,8 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(input) {
+}
 
 
 
