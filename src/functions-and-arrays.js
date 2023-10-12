@@ -1,20 +1,59 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(a,b) {
+  if(a > b){
+    return a;
+  }
+
+  else if  (b > a){
+    return b;
+  }
+
+  else{
+    return (a, b);
+  }
+}
+
 
 
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+let input = words
+function findLongestWord(input) {
+  if (input.length === 0){  
+    return null;
+  }
 
-function findLongestWord() {}
+  let greaterLength  = 0;
+  let foundIndex;
+
+  input.forEach((element, index) => {
+    if (element.length > greaterLength) {
+      greaterLength = element.length
+      foundIndex = index
+    }
+  })
+  return input[foundIndex]
+}
 
 
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
-
+function sumNumbers(input) {
+  let sum = 0;
+    if (input.length === 0 ){
+      return 0;
+    }
+    
+    else {
+      for (i=0; i<input.length; i++){
+        sum += input[i]
+      }
+    }
+    return sum
+  }
 
 
 // Iteration #3.1 Bonus:
@@ -26,20 +65,48 @@ function sum() {}
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
 
+
+function averageNumbers(input) {
+    
+  if (input.length === 0 ){
+    return null;
+  }
+  
+  else {
+    let sum = 0;
+    for (i=0; i<input.length; i++){
+      sum += input[i]
+    }
+    final = (sum/input.length)
+    return final
+  }
+  }
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(input) { 
+  if (input.length === 0 ){
+    return null;
+  }
+
+  else {
+    soma=0;
+    for (i=0 ; i<input.length; i++){
+      soma += input[i].length
+    }
+  }
+  let final = soma/input.length
+  return final
+}
 
 // Bonus - Iteration #4.1
 function avg() {}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
-  'crab',
+  'fish',
   'poison',
   'contagious',
   'simple',
@@ -52,8 +119,23 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(input) {
+  if(input.length === 0){
+      return null
+  }
 
+  else {
+    for (i=0 ; i<input.length; i++){
+      for (j=i+1; j<input.length; j++){
+        if (input[i] === input[j]){
+          console.log(input[j] + " is repeated ... removing index "+j)
+          input.splice(j,1)
+        }
+      }
+    }
+  }
+  return input
+}
 
 
 // Iteration #6: Find elements
